@@ -1,10 +1,10 @@
 abstract class Computer {
     public cpu: CPU
 
-    abstract makeCPU(): void
+    abstract makeCPU(): CPU
 
     public run() {
-        this.makeCPU()
+        this.cpu = this.makeCPU()
         this.cpu.run()
     }
 }
@@ -27,13 +27,13 @@ class AmdCPU implements CPU {
 
 class IntelComputer extends Computer {
     public makeCPU() {
-        this.cpu = new IntelCPU()
+        return new IntelCPU()
     }
 }
 
 class AmdComputer extends Computer {
     public makeCPU() {
-        this.cpu = new AmdCPU()
+        return new AmdCPU()
     }
 }
 
